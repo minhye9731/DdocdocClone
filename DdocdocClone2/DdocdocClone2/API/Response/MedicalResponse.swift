@@ -1,9 +1,9 @@
-//
-//  MedicalResponse.swift
-//  DdocdocClone
-//
-//  Created by 강민혜 on 6/15/22.
-//
+////
+////  MedicalResponse.swift
+////  DdocdocClone2
+////
+////  Created by 강민혜 on 6/17/22.
+////
 
 import Foundation
 

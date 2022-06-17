@@ -17,7 +17,7 @@ class MedicalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        MedicalRequest().getMedicalData(self)
+//        MedicalRequest().getMedicalData(self)
     }
 
 

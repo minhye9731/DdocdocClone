@@ -57,17 +57,17 @@ class LoginViewController: UIViewController {
     @IBAction func kakaoButtonTapped(_ sender: UIButton) {
         
         // 카카오톡 설치 여부 확인
-        if UserApi.isKakaoTalkLoginAvailable() {
+        if (UserApi.isKakaoTalkLoginAvailable()) {
             // 카톡 설치 O -> 카톡 로그인(즉, api 호출 결과를 클로저로 전달)
             loginWithApp()
             
-        } else {
-            // 카카 설치 X -> 웹브라우저로 카카오톡 계정 로그인
+        }
+        else {
+            // 카톡 설치 X -> 웹브라우저로 카카오톡 계정 로그인
             loginWithWeb()
         }
     }
 }
-
 
 
 extension LoginViewController {
@@ -78,9 +78,11 @@ extension LoginViewController {
             if let error = error {
                 print(error)
             } else {
-                print("카카오 톡으로 로그인 성공")
+                print("카카오톡 앱으로 로그인 성공")
                 // 여기에 로그인 관련 메소드 추가 가능
                 _ = oauthToken
+                let accessToken = oauthToken?.accessToken
+                self.presentToChart()
             }
         }
     }
@@ -91,12 +93,17 @@ extension LoginViewController {
             if let error = error {
                 print(error)
             } else {
-                print("카카오 톡으로 로그인 성공")
-                
+                print("카카오톡 웹 브라우저로 로그인 성공")
+
                 // 여기에  관련 메소드 추가 가능
                 _ = oauthToken
-                
+                let accessToken = oauthToken?.accessToken
+                self.presentToChart()
             }
         }
+    }
+    
+    func presentToChart() {
+        self.tabBarController?.selectedIndex = 1
     }
 }

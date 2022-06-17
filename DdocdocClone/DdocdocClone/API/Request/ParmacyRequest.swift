@@ -5,8 +5,8 @@
 //  Created by 강민혜 on 6/15/22.
 //
 
-import Alamofire
 import UIKit
+import Alamofire
 
 class ParmacyRequest {
     

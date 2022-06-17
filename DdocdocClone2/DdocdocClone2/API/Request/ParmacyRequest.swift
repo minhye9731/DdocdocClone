@@ -1,23 +1,22 @@
 //
-//  HospitalRequest.swift
-//  DdocdocClone
+//  ParmacyRequest.swift
+//  DdocdocClone2
 //
-//  Created by 강민혜 on 6/15/22.
+//  Created by 강민혜 on 6/17/22.
 //
 
-import UIKit
+import Foundation
 import Alamofire
 
-class HospitalRequest {
+class ParmacyRequest {
     
-    func getHospitalData(_ viewController: HospitalViewController) {
+    func getParmacyData(_ viewController: PharmacyListVC) {
         
         let url = "http://apis.data.go.kr/3660000/PharmacyService/getPharmacyList?serviceKey=In3zvEfdjADFB9bTdoM1Z4UlCeEhIeTo2carmmZtP0pwK4XXrMwlKSJp0fx3g0LuCNyXd1jrq9OzimhFWp4qAw==&numOfRows=15"
         
         let params: Parameters = [
             "serviceKey" : "In3zvEfdjADFB9bTdoM1Z4UlCeEhIeTo2carmmZtP0pwK4XXrMwlKSJp0fx3g0LuCNyXd1jrq9OzimhFWp4qAw==",
-            "numOfRows" : "15",
-            "pageNo" : 1
+            "numOfRows" : "15"
         ]
         
         // HTTP Method: GET
@@ -25,16 +24,16 @@ class HospitalRequest {
                    method: .get,
                    parameters: params,
                    headers: nil)
-        .responseDecodable(of: HospitalResponse.self) { response in
+        .responseDecodable(of: PharmacyResponse.self) { response in
             
             switch response.result {
                 
             case .success(let response):
-                print("DEBUG>> OpenHospital Response \(response) ")
+                print("DEBUG>> OpenParmacy Response \(response) ")
                 viewController.didSuccess(response)
                 
             case .failure(let error):
-                print("DEBUG>> OpenHospital Get Error : \(error.localizedDescription)\n\(error)")
+                print("DEBUG>> OpenParmacy Get Error : \(error.localizedDescription)")
                 
             }
         }
